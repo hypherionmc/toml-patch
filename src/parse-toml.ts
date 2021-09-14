@@ -65,7 +65,7 @@ function* walkBlock(cursor: Cursor<Token>, input: string): IterableIterator<Bloc
 
 function* walkValue(cursor: Cursor<Token>, input: string): IterableIterator<Value | Comment> {
   if (cursor.value!.type === TokenType.Literal) {
-    if (cursor.value!.raw[0] === DOUBLE_QUOTE || cursor.value!.raw[0] === SINGLE_QUOTE) {
+    if (cursor.value!.raw[0] === DOUBLE_QUOTE || cursor.value!.raw[0] === SINGLE_QUOTE || cursor.value!.raw.length > 16) {
       yield string(cursor);
     } else if (cursor.value!.raw === TRUE || cursor.value!.raw === FALSE) {
       yield boolean(cursor);
