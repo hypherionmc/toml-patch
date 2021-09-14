@@ -55,7 +55,7 @@ function walkValue(value: any, format: Format): Value {
     throw new Error('"null" and "undefined" values are not supported');
   }
 
-  if (isString(value)) {
+  if (isString(value) || value.length > 16) {
     return generateString(value);
   } else if (isInteger(value)) {
     return generateInteger(value);
